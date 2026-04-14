@@ -1,0 +1,45 @@
+ZDZV 3Shape testing connectivity 
+
+ZDZV Network :
+	telnet :  [SUCCESS] 94.245.89.109 443
+			  [SUCCESS] 104.45.193.253 443
+			  [FAIL] 137.116.115.186 443
+			  [FAIL] 52.96.163.250 443
+			  [FAIL] 137.116.109.248 443
+			  [FAIL] 104.40.180.21 443
+			  [FAIL] 40.113.183.107 443
+			  [FAIL] 13.80.140.157 443
+			  [FAIL] 40.112.208.124 443
+			  [FAIL] 52.175.195.182 443
+	traceroute : 
+	netcat : 
+	nmap :
+	
+
+BS Network :
+	telnet :  [SUCCESS] 94.245.89.109 443
+			  [SUCCESS] 104.45.193.253 443
+			  [FAIL] 137.116.115.186 443
+
+	traceroute : 
+	netcat : [SUCCESS] 94.245.89.109 443
+			 [SUCCESS] 104.45.193.253 443
+			 [FAIL] 137.116.115.186 443
+	nmap :  [SUCCESS] 94.245.89.109 443
+			[SUCCESS] 104.45.193.253 443
+			[SUCCESS] 137.116.115.186 443
+
+
+
+
+Mobile HotSpot : 
+	telnet : [SUCCESS] 94.245.89.109 443
+			 [SUCCESS] 104.45.193.253 443
+			 [FAIL] 137.116.115.186 443
+	traceroute : 
+	netcat : [SUCCESS] 94.245.89.109 443
+		     [SUCCESS] 104.45.193.253 443
+			 [FAIL] 137.116.115.186 443
+	nmap : [SUCCESS] 94.245.89.109 443
+		   [SUCCESS] 104.45.193.253 443
+		   [SUCCESS] 137.116.115.186 443

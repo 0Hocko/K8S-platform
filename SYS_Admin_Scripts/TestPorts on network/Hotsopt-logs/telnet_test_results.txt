@@ -1,0 +1,4 @@
+Testing Telnet connectivity...
+[SUCCESS] 94.245.89.109 443
+[SUCCESS] 104.45.193.253 443
+[FAIL] 137.116.115.186 443

@@ -1,0 +1,4 @@
+Testing HTTPS service...
+[FAIL] https://94.245.89.109 HTTP Code: 000
+[FAIL] https://104.45.193.253 HTTP Code: 000
+[FAIL] https://137.116.115.186 HTTP Code: 000

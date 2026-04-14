@@ -1,0 +1,40 @@
+@echo off
+:: TEST TELNET CONNECTION 
+cls
+echo Testing connection to servers for 3Shape
+echo.
+setlocal enabledelayedexpansion
+
+:: Output file path
+set output_file=telnet_test_results.txt
+
+:: Clear the output file
+echo Testing Telnet connectivity... > %output_file%
+
+:: List of IPs and Ports to test (edit as per the actual IPs/Ports from the website)
+set "test_list=94.245.89.109 443 104.45.193.253 443 137.116.115.186 443"
+
+:: Loop through the test list
+for %%A in (%test_list%) do (
+    set ip=%%A
+    set port=%%B
+
+    :: Print test details to console
+    echo Testing Telnet on !ip! port !port!...
+
+    :: Test the connection with timeout (30 seconds)
+    telnet !ip! !port! >nul 2>&1
+
+    :: Check if connection was successful
+    if !errorlevel! == 0 (
+        echo [SUCCESS] !ip! !port! >> %output_file%
+    ) else (
+        echo [FAIL] !ip! !port! >> %output_file%
+    )
+)
+
+:: Display results
+echo Results saved to %output_file%
+type %output_file%
+
+pause

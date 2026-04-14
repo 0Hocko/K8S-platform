@@ -1,0 +1,53 @@
+# List of service to check
+$services = @(
+    "AxInstSV", "AJRouter", "AppReadiness", "AppIDSvc", "Appinfo", "ALG",
+    "AppMgmt", "AppXSVC", "AutoTimeZoneUpdater", "BthAvctpSvc", "BITS",
+    "BrokerInfrastructure", "BFE", "BTAGService", "bthserv", "camsvc",
+    "CaptureService", "CertPropSvc", "ClipSVC", "cbdhsvc", "KeyIso",
+    "EventSystem", "COMSysApp", "Browser", "CDPUserSvc", "CDPSvc",
+    "DiagTrack", "ConsentUxUserSvc", "PimIndexMaintenanceSvc", "CoreMessagingRegistrar",
+    "VaultSvc", "CryptSvc", "DsSvc", "DcomLaunch", "DoSvc", "DeviceAssociationService",
+    "DeviceInstall", "DmEnrollmentSvc", "dmwappushservice", "DsmSvc", "DevicePickerUserSvc",
+    "DevicesFlowUserSvc", "DevQueryBroker", "Dhcp", "DPS", "WdiServiceHost", "WdiSystemHost",
+    "TrkWks", "MSDTC", "Dnscache", "MapsBroker", "EmbeddedMode", "EFS",
+    "EntAppSvc", "Eaphost", "FDPhost", "FDResPub", "lfsvc", "GraphicsPerfSvc",
+    "gpsvc", "hidserv", "HvHost", "vmickvpexchange", "vmicguestinterface",
+    "vmicshutdown", "vmicheartbeat", "vmicvmsession", "vmicrdv", "vmictimesync",
+    "vmicvss", "IKEEXT", "SharedAccess", "iphlpsvc", "PolicyAgent", "KPS",
+    "KtmRm", "lltdsvc", "lsm", "DiagSvcs", "wlidsvc", "AppVClient",
+    "MSiSCSI", "NgcSvc", "NgcCtnrSvc", "swprv", "SpacePort", "InstallService",
+    "NetTcpPortSharing", "Netlogon", "NcbService", "Netman", "NcaSvc", "NlaSvc",
+    "NetSetupSvc", "nsi", "CscService", "ssh-agent", "defragsvc", "icssvc",
+    "PerfHost", "pla", "PhoneSvc", "PlugPlay", "WPDBusEnum", "Power",
+    "Spooler", "PrintNotify", "PrintWorkflowUserSvc", "wercplsupport", "PcaSvc",
+    "QWAVE", "RadioMgr", "RasAuto", "RasAuto", "RasMan", "SessionEnv",
+    "TermService", "UmRdpService", "RpcSs", "RpcLocator", "RemoteRegistry",
+    "RSoPProv", "RemoteAccess", "RpcEptMapper", "seclogon", "SstpSvc",
+    "SamSs", "SensorDataService", "sensrsvc", "SensorService", "LanmanServer",
+    "shpamsvc", "ShellHWDetection", "SCardSvr", "ScDeviceEnum", "SCPolicySvc",
+    "SNMP", "sppsvc", "SACore", "svsvc", "SSDPSRV", "StateRepository",
+    "StillImage", "StorSvc", "TieringEngineService", "SysMain", "SENS",
+    "SystemEventsBroker", "SgrmBroker", "Schedule", "lmhosts", "TapiSrv",
+    "Themes", "TimeBrokerSvc", "TabletInputService", "UsoSvc", "upnphost",
+    "UALSVC", "UserDataSvc", "UnistoreSvc", "UEVAgentService", "UserManager",
+    "ProfSvc", "vds", "VSS", "WalletService", "WarpJITSvc", "TokenBroker",
+    "Audiosrv", "AudioEndpointBuilder", "WbioSrvc", "FrameServer", "Wcmsvc",
+    "Sense", "WdNisSvc", "MpsSvc", "WEPHostSvc", "WerSvc", "Wecsvc",
+    "EventLog", "FontCache", "stisvc", "wisvc", "TrustedInstaller", "FontCache3.0.0.0",
+    "PushToInstall", "WpnService", "WpnUserService", "DevicePickerUserSvc",
+    "WinRM", "WSearch", "SecurityHealthService", "W32Time", "wuauserv",
+    "WaaSMedicSvc", "WinHttpAutoProxySvc", "dot3svc", "wmiApSrv", "LanmanWorkstation",
+    "isignia", "rcsvc", "nxlog", "FsCRemoteInspectionSvc", "HealthService",
+    "OMIForwarding", "SepMasterService", "SepWscSvc", "SepLpsSvc", "SepScanSvc",
+    "SepWscSvc", "SepWscSvc"
+)
+
+# Check the status of each service
+foreach ($service in $services) {
+    $status = Get-Service -Name $service -ErrorAction SilentlyContinue
+    if ($status) {
+        Write-Output "$service: $($status.StartType)"
+    } else {
+        Write-Output "$service: Service not found"
+    }
+}
