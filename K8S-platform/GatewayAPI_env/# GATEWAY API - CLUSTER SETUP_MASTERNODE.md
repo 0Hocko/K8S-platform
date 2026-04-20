@@ -82,6 +82,8 @@ timedatectl set-ntp true
 # Clean version
 ### NOTE : Here you have to change for every deployment - IP, ...
 
+NODE_IP="10.189.26.11"
+
 # ----- Config -------
 mkdir -p /etc/rancher/rke2
 cat > /etc/rancher/rke2/config.yaml << EOF
@@ -90,7 +92,7 @@ cni: calico
 disable:
   - rke2-ingress-nginx # IMPORTANT do disable !
 tls-san:
-$(for ip in "${TLS_SAN[@]}"; do echo "  - $ip"; done)
+  $NODE_IP
 write-kubeconfig-mode: "0644"
 node-taint:
   - "node-role.kubernetes.io/control-plane=true:NoSchedule"
@@ -122,3 +124,8 @@ watch !!
 
 
 
+# -------------- NODE ROLE LABLE -------------
+# Run after worker is joined
+#
+# kubectl label node k26w1 node-role.kubernetes.io/worker=worker
+#

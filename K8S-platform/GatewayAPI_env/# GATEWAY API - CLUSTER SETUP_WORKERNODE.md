@@ -54,7 +54,7 @@ timedatectl set-ntp true
 # Clean version
 ### NOTE : Here you have to change for every deployment - IP, ...
 # --- VARIABLES ---
-MASTER_IP="10.189.33.11"
+MASTER_IP="10.189.26.11"
 TOKEN="sPkEE3cYrG+UNFFon6xzgSUNA3E9MyGv76WL4g//uwKAcT978DEm69fXrKmz6tEA"
 
 # ----- Config -------
@@ -64,12 +64,17 @@ cat <<EOF > /etc/rancher/rke2/config.yaml
 server: https://$MASTER_IP:9345
 token: $TOKEN
 cni: calico
+kubelet-arg:
+  - "system-reserved=cpu=500m,memory=500Mi"
+  - "kube-reserved=cpu=500m,memory=500Mi"
+  - "eviction-hard=memory.available<500Mi"
 EOF
 
 # ------ INSTALL ------
-curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE=server sh -
+curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE=agent sh -
 # Enable service
-systemctl enable rke2-server
-systemctl start rke2-server
 
-systemctl status rke2-server
+systemctl enable rke2-agent
+systemctl start rke2-agent
+
+systemctl status rke2-agent
